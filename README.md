@@ -67,7 +67,7 @@ $ docker run  -d \
 |`HEALTH_CHECK_SILENT`| No |Set to `1` to supress the 'Network is up' message. Defaults to `1` if unset.|`HEALTH_CHECK_SILENT=1`|`1`|
 |`HEALTH_CHECK_AMOUNT`| No |The amount of pings that get send when checking for connection.|`HEALTH_CHECK_AMOUNT=10`|`1`|
 |`RESTART_CONTAINER`| No |Set to `no` to **disable** the automatic restart when the network is possibly down.|`RESTART_CONTAINER=yes`|`yes`|
-|`INSTALL_PYTHON3`| No |Set this to `yes` to let the container install Python3.|`INSTALL_PYTHON3=yes`|`no`|
+|`INSTALL_PYTHON3`| No |Set this to `yes` to let the container install Python3. This is required for qBittorrent plugins to work.|`INSTALL_PYTHON3=yes`|`no`|
 |`ADDITIONAL_PORTS`| No |Adding a comma delimited list of ports will allow these ports via the iptables script.|`ADDITIONAL_PORTS=1234,8112`||
 
 ## Volumes
@@ -125,12 +125,12 @@ User ID (PUID) and Group ID (PGID) can be found by issuing the following command
 id <username>
 ```
 
-# Issues
-If you are having issues with this container please submit an issue on GitHub.  
-Please provide logs, Docker version and other information that can simplify reproducing the issue.  
-If possible, always use the most up to date version of Docker, you operating system, kernel and the container itself. Support is always a best-effort basis.
+## qBittorrent Plugins
+In order for qBittorrent plugins to work, **Python 3 must be installed.** You can do by adding the environment variable:
+```
+INSTALL_PYTHON3=yes
+```
 
 ### Credits:
-[MarkusMcNugen/docker-qBittorrentvpn](https://github.com/MarkusMcNugen/docker-qBittorrentvpn)  
-[DyonR/jackettvpn](https://github.com/DyonR/jackettvpn)  
-This projects originates from MarkusMcNugen/docker-qBittorrentvpn, but forking was not possible since DyonR/jackettvpn uses the fork already.
+[MarkusMcNugen/docker-qBittorrentvpn](https://github.com/MarkusMcNugen/docker-qBittorrentvpn)
+[DyonR/docker-qBittorrentVPN](https://github.com/DyonR/docker-qBittorrentVPN)
